@@ -2683,7 +2683,11 @@ typedef NSMutableArray<SendAttachment*>				_AttachList;
 	// ファイル種別
 	NSString* type = attrs[NSFileType];
 	if ([type isEqualToString:NSFileTypeRegular]) {
-		fileAttr = IPMSG_FILE_REGULAR;
+		if ([path.lastPathComponent hasPrefix:@"pasted_image_"]) {
+			fileAttr = IPMSG_FILE_CLIPBOARD;
+		} else {
+			fileAttr = IPMSG_FILE_REGULAR;
+		}
 	} else if ([type isEqualToString:NSFileTypeDirectory]) {
 		fileAttr = IPMSG_FILE_DIR;
 	} else {

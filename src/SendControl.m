@@ -313,6 +313,33 @@ typedef NSMutableArray<NSImage*>		_IconList;
 	[self.attachDrawer open:self];
 }
 
+- (void)syncAttachmentsWithPaths:(NSSet<NSString*>*)currentPaths
+{
+	NSMutableArray* toRemove = [NSMutableArray array];
+	for (SendAttachment* attach in self.attachments) {
+		if ([attach.path.lastPathComponent hasPrefix:@"pasted_image_"]) {
+			if (![currentPaths containsObject:attach.path]) {
+				[toRemove addObject:attach];
+			}
+		}
+	}
+	
+	for (SendAttachment* attach in toRemove) {
+		NSInteger idx = [self.attachments indexOfObject:attach];
+		if (idx != NSNotFound) {
+			[self.attachments removeObjectAtIndex:idx];
+			if (idx < self.icons.count) {
+				[self.icons removeObjectAtIndex:idx];
+			}
+		}
+	}
+	
+	if (toRemove.count > 0) {
+		[self.attachTable reloadData];
+		[self setAttachHeader];
+	}
+}
+
 /*----------------------------------------------------------------------------*
  * その他
  *----------------------------------------------------------------------------*/

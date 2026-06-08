@@ -62,6 +62,7 @@
 
 // 添付ファイル
 - (void)appendAttachmentByPath:(NSString*)path;
+- (void)syncAttachmentsWithPaths:(NSSet<NSString*>*)currentPaths;
 
 // その他
 - (IBAction)updateUserList:(id)sender;
