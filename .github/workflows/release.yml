@@ -25,6 +25,14 @@ jobs:
 
       - name: Build Xcode Project
         run: |
+          # Clear Swift Package Manager cache to prevent binary target artifacts 'already exists in file system' fatal errors on CI runners
+          rm -rf ~/Library/Caches/org.swift.swiftpm
+          rm -rf ~/Library/Developer/Xcode/DerivedData
+          
+          # Resolve packages cleanly first
+          xcodebuild -project IPMessenger.xcodeproj -resolvePackageDependencies
+          
+          # Perform the build
           xcodebuild -project IPMessenger.xcodeproj \
             -scheme IPMessenger \
             -configuration Debug \
