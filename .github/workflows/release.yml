@@ -40,11 +40,11 @@ jobs:
 
       - name: Build DMG Package
         run: |
-          npx appdmg appdmg.json build/IPMessenger-Pro-Mac-Designed.dmg
+          npx appdmg appdmg.json build/IPMessenger-Pro-Mac.dmg
 
       - name: Create GitHub Release and Upload DMG
         uses: softprops/action-gh-release@v2
         with:
-          files: build/IPMessenger-Pro-Mac-Designed.dmg
+          files: build/IPMessenger-Pro-Mac.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
