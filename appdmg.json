@@ -1,0 +1,15 @@
+{
+  "title": "IPMessenger Pro",
+  "background": "dmg_background.png",
+  "icon-size": 64,
+  "window": {
+    "size": {
+      "width": 600,
+      "height": 600
+    }
+  },
+  "contents": [
+    { "x": 153, "y": 304, "type": "file", "path": "build/IPMessenger.app" },
+    { "x": 447, "y": 304, "type": "link", "path": "/Applications" }
+  ]
+}
