@@ -257,7 +257,7 @@ typedef NSMutableArray<NSImage*>		_IconList;
 	// 送信情報構築
 	SendMessage* info = [[SendMessage alloc] init];
 	info.packetNo		= MessageCenter.nextPacketNo;
-	info.message		= self.messageArea.string;
+	info.message		= [self.messageArea.string stringByReplacingOccurrencesOfString:@"\uFFFC" withString:@""];
 	info.sealed			= (self.sealCheck.state == NSControlStateValueOn);
 	info.locked			= (self.passwordCheck.state == NSControlStateValueOn);
 	info.attachments	= [NSArray<SendAttachment*> arrayWithArray:self.attachments];
