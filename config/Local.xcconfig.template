@@ -1,0 +1,6 @@
+// ローカル環境設定テンプレート
+// このファイルをコピーして Local.xcconfig を作成し、Team ID を設定してください
+// $ cp Config/Local.xcconfig.template Config/Local.xcconfig
+
+// Apple Developer Portal の Membership ページで確認できます
+DEVELOPMENT_TEAM = YOUR_TEAM_ID_HERE
